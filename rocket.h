@@ -16,6 +16,7 @@ typedef struct {
 } Rocket;
 
 void rocket_init(Rocket *r);
+float rocket_get_mass(Rocket *r);
 void rocket_update(Rocket *r);
 
 # endif

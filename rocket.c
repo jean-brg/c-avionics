@@ -26,16 +26,18 @@ void rocket_update(Rocket *r) {
     r->flight_time += 1;
 
     float f_thrust = 0;
-    if (r->fuel_mass > 0) {
+    float required_fuel_mass = r->thruster_level * r->max_fuel_flow_rate;
+    if (required_fuel_mass >= r->fuel_mass) {
         f_thrust = r->max_thrust * r->thruster_level;
+        r->fuel_mass -= required_fuel_mass;
+    } else {
+        f_thrust = (r->max_thrust * r->thruster_level) * (r->fuel_mass / required_fuel_mass);
+        r->fuel_mass = 0;
     }
 
     r->acceleration = (f_thrust / rocket_get_mass(r)) - GRAVITY_ACCELERATION;
-
-    r->altitude += r->velocity * DELTA_T + 0.5 * r->acceleration * DELTA_T * DELTA_T;
     r->velocity += r->acceleration * DELTA_T;
-
-    r->fuel_mass -= r->thruster_level * r->max_fuel_flow_rate;
+    r->altitude += r->velocity * DELTA_T + 0.5 * r->acceleration * DELTA_T * DELTA_T;
 
     if (r->fuel_mass < 0) {
         r->fuel_mass = 0;

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "rocket.h"
 
-// MAIN
 int main() {
     Rocket rocket;
     rocket_init(&rocket);
