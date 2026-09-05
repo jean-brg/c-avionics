@@ -27,7 +27,7 @@ void rocket_update(Rocket *r) {
 
     float f_thrust = 0;
     float required_fuel_mass = r->thruster_level * r->max_fuel_flow_rate;
-    if (required_fuel_mass >= r->fuel_mass) {
+    if (r->fuel_mass >= required_fuel_mass) {
         f_thrust = r->max_thrust * r->thruster_level;
         r->fuel_mass -= required_fuel_mass;
     } else {
