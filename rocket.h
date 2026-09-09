@@ -20,5 +20,6 @@ typedef struct {
 void rocket_init(Rocket *r);
 float rocket_get_mass(Rocket *r);
 void rocket_update(Rocket *r);
+double rocket_get_air_density_at_altitude(float altitude);
 
 # endif
