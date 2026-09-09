@@ -3,6 +3,7 @@
 
 #define GRAVITY_ACCELERATION 9.81
 #define DELTA_T 0.001
+#define AIR_DENSITY 1.225
 
 // ROCKET FUNCTIONS
 void rocket_init(Rocket *r) {
@@ -10,6 +11,8 @@ void rocket_init(Rocket *r) {
     r->fuel_mass = 8;
     r->max_fuel_flow_rate = 0.0012;
     r->max_thrust = 2950;
+    r->drag_coefficient = 0.45;
+    r->cross_section_area = 0.007854;
     r->thruster_level = 0;
     r->flight_time = 0;
     r->acceleration = 0;
@@ -34,6 +37,8 @@ void rocket_update(Rocket *r) {
         f_thrust = (r->max_thrust * r->thruster_level) * (r->fuel_mass / required_fuel_mass);
         r->fuel_mass = 0;
     }
+    
+    f_thrust -= 0.5 * AIR_DENSITY * (r->velocity * r->velocity) * r->drag_coefficient * r->cross_section_area;
 
     r->acceleration = (f_thrust / rocket_get_mass(r)) - GRAVITY_ACCELERATION;
     r->velocity += r->acceleration * DELTA_T;
