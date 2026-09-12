@@ -4,7 +4,7 @@ A project to learn C and avionics logics
 ## Compile Command
 To speed up the iterations of development, you can this command to create a function to auto-recompile and -run the avionics script:
 ```bash
-avio() {gcc avionics.c rocket.c -o avionics && ./avionics}
+avio() {gcc main.c rocket.c -o avionics && ./avionics}
 ```
 
 ## No AI

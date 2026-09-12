@@ -31,8 +31,7 @@ double rocket_get_air_density_at_altitude(float altitude) {
     if (altitude > 25000) {
         temperature_c = -131.21 + 0.00299 * altitude;
         pressure_kpa = 2.488 * pow((temperature_c + 273.1) / 216.6, -11.388);
-    } else if (11000 < altitude && altitude <= 25000)
-    {
+    } else if (11000 < altitude && altitude <= 25000) {
         temperature_c = -56.46;
         pressure_kpa = 22.65 * exp(1.73 - 0.000157 * altitude);
     } else if (0 <= altitude && altitude <= 11000) {
@@ -41,6 +40,7 @@ double rocket_get_air_density_at_altitude(float altitude) {
     } else {
         perror("rocket_get_air_density_at_altitude: provided altitude is negative");
     }
+    
     return pressure_kpa / (0.2869 * (temperature_c + 273.1));
 }
 
