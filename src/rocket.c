@@ -36,7 +36,7 @@ void rocket_update(Rocket *r) {
         r->fuel_mass = 0;
     }
     
-    f_thrust -= 0.5 * environment_get_air_density_at_altitude(r->altitude) * pow(r->velocity, 2) * r->drag_coefficient * r->cross_section_area;
+    f_thrust -= 0.5 * environment_get_air_density_at_altitude(r->altitude) * (fabs(r->velocity) * r->velocity) * r->drag_coefficient * r->cross_section_area;
 
     r->acceleration = (f_thrust / rocket_get_mass(r)) - environment_get_earth_acceleration_at_altitude(r->altitude);
     r->velocity += r->acceleration * DELTA_T;
