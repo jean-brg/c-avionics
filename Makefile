@@ -1,15 +1,16 @@
 BUILD_TARGET = avionics
-OBJECTS = ./obj/main.o ./obj/rocket.o ./obj/environment.o ./obj/flight_data.o
+SOURCES = $(wildcard ./src/*.c)
+OBJECTS = $(patsubst ./src/%.c, ./obj/%.o, $(SOURCES))
 
 all: $(BUILD_TARGET)
 
 $(BUILD_TARGET): $(OBJECTS)
 	gcc $(OBJECTS) -o $(BUILD_TARGET)
 
-./obj/%.o: ./src/%.c | make_obj_dir
+./obj/%.o: ./src/%.c | ./obj
 	gcc -c $< -o $@
 
-make_obj_dir:
+./obj:
 	mkdir -p ./obj
 
 run: $(BUILD_TARGET)
