@@ -1,5 +1,5 @@
 BUILD_TARGET = avionics
-OBJECTS = ./obj/main.o ./obj/rocket.o
+OBJECTS = ./obj/main.o ./obj/rocket.o ./obj/environment.o
 
 all: $(BUILD_TARGET)
 

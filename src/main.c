@@ -35,7 +35,19 @@ int main() {
         }
         flight_data_record(&flight_data, &rocket);
     } while (rocket.altitude > 0);
-    printf("Max Alt: %f m | Max Vel: %f m/s | Max Acc: %f m/s2 | Flight Time: %f sec\n", flight_data.max_altitude, flight_data.max_velocity, flight_data.max_acceleration, flight_data.flight_time);
+    printf(
+        "=== FLIGHT SUMMARY ===\n"
+        "Max Alt: %f m\n"
+        "Max Vel: %f m/s\n"
+        "Max Acc: %f m/s2 (%.2f g's)\n"
+        "Flight Time: %f sec\n"
+        "======================\n", 
+        flight_data.max_altitude, 
+        flight_data.max_velocity, 
+        flight_data.max_acceleration, 
+        flight_data.max_acceleration / 9.81, 
+        flight_data.flight_time
+    );
 
     return 0;
 }
