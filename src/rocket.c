@@ -5,7 +5,6 @@
 
 #define DELTA_T 0.001
 
-// ROCKET FUNCTIONS
 void rocket_init(Rocket *r) {
     r->body_mass = 10;
     r->fuel_mass = 8;
@@ -24,7 +23,6 @@ float rocket_get_mass(Rocket *r) {
     return r->body_mass + r->fuel_mass;
 }
 
-// ROCKET MAIN
 void rocket_update(Rocket *r) {
     r->flight_time += 1;
 
