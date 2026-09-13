@@ -6,7 +6,7 @@ all: $(BUILD_TARGET)
 $(BUILD_TARGET): $(OBJECTS)
 	gcc $(OBJECTS) -o $(BUILD_TARGET)
 
-./obj/%.o: ./%.c | make_obj_dir
+./obj/%.o: ./src/%.c | make_obj_dir
 	gcc -c $< -o $@
 
 make_obj_dir:

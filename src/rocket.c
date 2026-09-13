@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-#include "rocket.h"
+#include "../include/rocket.h"
 
 #define GRAVITY_ACCELERATION 9.81
 #define DELTA_T 0.001

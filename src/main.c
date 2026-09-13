@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "rocket.h"
+#include "../include/rocket.h"
 
 // SETTINGS
 static const bool verbose_output = false;
